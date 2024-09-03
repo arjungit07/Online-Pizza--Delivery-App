@@ -12,21 +12,18 @@ const Contact = () => {
     <>
       <Container style={{ marginTop: "50px" }}>
         <Row>
-          <h1>Slice and Dice</h1>
+          <h1 style={{marginBottom:'60px'}}>Slice and Dice</h1>
           <Col md={6}>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Consequuntur nobis nulla ipsam est maiores eligendi porro nostrum,
-              odio minima pariatur qui! Omnis provident illo praesentium
-              laudantium fugit voluptatum sed quasi qui cupiditate est ab
-              incidunt nemo deleniti magni reiciendis modi porro, veniam soluta
-              quo commodi maiores necessitatibus quas unde! Quod fuga obcaecati
-              perferendis nostrum, exercitationem laudantium cum debitis facere
-              laboriosam non dolores inventore voluptatum accusamus tenetur,
-              sunt id odio ratione necessitatibus minima tempore beatae
-              veritatis? Incidunt cum possimus rerum doloribus ad labore dolor
-              fugiat, magnam illo est, vitae iusto cupiditate quasi libero.
-              Earum, ea? Facere ea enim esse cupiditate beatae?
+              
+
+{/* <h4 style={{fontFamily:'monospace'}}>Contact Us </h4> */}
+
+</p>
+
+<br />
+<p style={{fontSize:"20px",fontFamily:'monospace',marginTop:'50px'}}> 
+<b>We love hearing from our customers! If you have any questions, comments, or concerns, please don't hesitate to contact us.</b>
             </p>
             <Table striped bordered hover variant="dark" className="text-center">
               <thead>
@@ -49,7 +46,7 @@ const Contact = () => {
             </Table>
           </Col>
           <Col md={6}>
-          <img src="images/contact.jpg"/>
+          <img src="images/contact.jpg" alt = 'logo'/>
           </Col>
         </Row>
       </Container>

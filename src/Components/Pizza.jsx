@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Card, Button ,Modal} from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Card, Button, Modal } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {useDispatch} from "react-redux"
-import {addToCart} from '../action/cartAction'
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../action/cartAction";
 
 const Pizza = ({ pizza }) => {
   const [varients, setVarients] = useState("small");
@@ -13,20 +13,36 @@ const Pizza = ({ pizza }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
+  console.log(cartItems, "=======>");
 
-  
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  // useEffect(() => {
+  //   const persistedCartItems = localStorage.getItem('cartItems');
+  //   if (persistedCartItems) {
+  //     dispatch(setCartItems(JSON.parse(persistedCartItems)));
+  //   }
+  // }, [dispatch]);
+
   const addToCartHandler = () => {
-    dispatch(addToCart(pizza,quantity,varients))
-    
-  }
- 
+    dispatch(addToCart(pizza, quantity, varients));
+  };
+
   return (
     <>
-      <Card style={{ width: "18rem" ,margin:'50px 30px', cursor:'pointer'}} id={pizza._id}>
-        <Card.Img variant="top" src={pizza.image} onClick={handleShow}/>
+      <Card
+        style={{ width: "18rem", margin: "50px 30px", cursor: "pointer" }}
+        id={pizza._id}
+      >
+        <Card.Img variant="top" src={pizza.image} onClick={handleShow} />
         <Card.Body>
-          <Card.Title>{pizza.name} <hr/> </Card.Title>
+          <Card.Title>
+            {pizza.name} <hr />{" "}
+          </Card.Title>
           <Card.Text>
             <Row>
               <Col md={6}>
@@ -47,14 +63,12 @@ const Pizza = ({ pizza }) => {
               </Col>
               <Col md={6}>
                 <h6>Quantity</h6>
-                <select value={quantity}  onChange={(e) => setquantity(e.target.value)}>
+                <select
+                  value={quantity}
+                  onChange={(e) => setquantity(e.target.value)}
+                >
                   {[...Array(10).keys()].map((v, i) => (
-                    <option
-                      value={i + 1}
-                     
-                    >
-                      {i + 1}
-                    </option>
+                    <option value={i + 1}>{i + 1}</option>
                   ))}
                 </select>
               </Col>
@@ -63,9 +77,9 @@ const Pizza = ({ pizza }) => {
           <Row>
             <Col md={6}>Price:{pizza.prices[0][varients] * quantity}/Rs</Col>
             <Col md={6}>
-            <Button
-            onClick={()=>addToCartHandler()}
-             variant="primary">Add to cart</Button>{' '}
+              <Button onClick={() => addToCartHandler()} variant="primary" className="animated-button">
+                Add to cart
+              </Button>{" "}
             </Col>
           </Row>
         </Card.Body>
@@ -76,14 +90,16 @@ const Pizza = ({ pizza }) => {
           <Modal.Title>{pizza.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <div> <Card.Img variant="top" src={pizza.image}/></div>
-        <div><h5 style={{marginTop:"10px"}}>Ingredients:</h5>
-         <h6>{pizza.ingredients}</h6></div>
+          <div>
+            {" "}
+            <Card.Img variant="top" src={pizza.image} />
+          </div>
+          <div>
+            <h5 style={{ marginTop: "10px" }}>Ingredients:</h5>
+            <h6>{pizza.ingredients}</h6>
+          </div>
         </Modal.Body>
-        <Modal.Footer>
-          
-         
-        </Modal.Footer>
+        <Modal.Footer></Modal.Footer>
       </Modal>
     </>
   );

@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 const About = () => {
   return (
     <>
-      <Container style={{ marginTop: "60px" ,marginBottom:'80px',fontSize:'20px'}}>
+      <Container style={{ marginTop: "60px" ,marginBottom:'80px',fontSize:'20px',fontFamily:'serif'}}>
         <h1>Who We Are:</h1>
         <p>
         There’s nothing cookie-cutter about <b>Slice and Dice</b>. Not our pizzas. Not our people. And definitely not the way we live life. Around here, we don’t settle for anything less than food we’re proud to serve. And we don’t just clock in. Not when we can also become our best, make friends, and have fun while we’re at it. <b>We’re the pizza company that lives life unboxed.</b>
