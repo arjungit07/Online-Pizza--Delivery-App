@@ -18,7 +18,7 @@ export const getAllPizzas=() => async(dispatch)=>{
 export const addPizza = (pizza) => async (dispatch) => {
     dispatch({ type: "ADD_PIZZAS_REQUEST" });
     try {
-      await axios.post("/api/pizza/addpizza", { pizza });
+      await axios.post("https://pizza-shop-backend-1.onrender.com/api/pizza/addpizza", { pizza });
       dispatch({ type: "ADD_PIZZAS_SUCCESS" });
     } catch (err) {
       dispatch({ type: "ADD_PIZZAS_FAIL", payload: err });
@@ -27,7 +27,7 @@ export const addPizza = (pizza) => async (dispatch) => {
 
 export const deletePizza = (pizzaId) => async (dispatch) => {
 try {
-    const res = await axios.post('/api/pizza/deletepizza',{
+    const res = await axios.post('https://pizza-shop-backend-1.onrender.com/api/pizza/deletepizza',{
         pizzaId,
      })
     swal("Pizza Deleted Successfully", "success");
@@ -43,7 +43,7 @@ let filteredPizza;
 
 dispatch({type:"GET_PIZZAS_REQUEST"})
 try {
-  const res = await axios.get('/api/pizza/getAllPizzas')
+  const res = await axios.get('https://pizza-shop-backend-1.onrender.com/api/pizza/getAllPizzas')
   filteredPizza = res.data.filter(pizza => pizza.name.toLowerCase().includes(searchKey))
   dispatch({type:"GET_PIZZAS_SUCCESS",payload:filteredPizza})
   if(category !== "all") {

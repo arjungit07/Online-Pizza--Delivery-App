@@ -3,7 +3,7 @@ import swal from "sweetalert";
 export const registerUser = (user) => async (dispatch) => {
   dispatch({ type: "USER_REGISTER_REQUEST" });
   try {
-    const res = await axios.post("/api/users/register", user);
+    const res = await axios.post("https://pizza-shop-backend-1.onrender.com/api/users/register", user);
     console.log(res);
     dispatch({ type: "USER_REQUEST_SUCCESS" });
     swal("Success", "User Register Successfully", "success");
@@ -27,7 +27,7 @@ export const registerUser = (user) => async (dispatch) => {
 export const loginUser = (user) => async (dispatch) => {
   dispatch({ type: "USER_LOGIN_REQUEST" });
   try {
-    const response = await axios.post("/api/users/login", user);
+    const response = await axios.post("https://pizza-shop-backend-1.onrender.com/api/users/login", user);
     console.log("===>", response);
     dispatch({ type: "USER_LOGIN_SUCCESS", payload: response.data });
     localStorage.setItem("currentUser", JSON.stringify(response.data));
@@ -45,7 +45,7 @@ export const logoutUser = () => (dispatch) => {
 export const getAllUsers = () => async (dispatch) => {
   dispatch({ type: "GET_USERS_REQUEST" });
   try {
-    const res = await axios.get("/api/users/getallusers");
+    const res = await axios.get("https://pizza-shop-backend-1.onrender.com/api/users/getallusers");
     console.log(res);
     dispatch({ type: "GET_USERS_SUCCESS", payload: res.data });
   } catch (err) {
@@ -55,7 +55,7 @@ export const getAllUsers = () => async (dispatch) => {
 
 export const deleteUser = (userid) => async (dispatch) => {
   try {
-    await axios.post("/api/users/deleteuser", { userid });
+    await axios.post("https://pizza-shop-backend-1.onrender.com/api/users/deleteuser", { userid });
     swal("User Deleted Succss!", "success");
     window.location.reload();
     // console.log(res);
