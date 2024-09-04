@@ -6,7 +6,7 @@ import swal from 'sweetalert';
 export const getAllPizzas=() => async(dispatch)=>{
     dispatch({type:"GET_PIZZAS_REQUEST"})
     try {
-        const res= await axios.get('http://localhost:8080/api/pizza/getAllPizzas')
+        const res= await axios.get('https://pizza-shop-backend-1.onrender.com/api/pizza/getAllPizzas')
         console.log(res)
         dispatch({type:"GET_PIZZAS_SUCCESS",payload:res.data})
 
