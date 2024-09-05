@@ -1,5 +1,5 @@
 import React ,{useState,useEffect} from 'react'
-import { Container, Form, Button ,Row,Col } from 'react-bootstrap'
+import { Container, Form, Button ,Row,Col, Alert } from 'react-bootstrap'
 import {useDispatch} from 'react-redux'
 import {loginUser} from '../action/userAction'
 
@@ -53,7 +53,13 @@ const Login = () => {
       <Button variant="primary" 
       onClick={loginHandler}>
         Log in
-      </Button>
+              </Button>
+              
+               <Alert variant="info" style={{ marginTop: '25px', fontSize: '14px' }}>
+                For testing, use the following credentials: <br/>
+                <strong>Email:</strong> dummy@gmail.com <br/>
+                <strong>Password:</strong> dummy1234
+              </Alert>
     </Form>
     </Col>
     <Col md={6}>
