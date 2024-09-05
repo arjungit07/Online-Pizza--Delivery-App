@@ -22,7 +22,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Homescreen />} exact />
-        <Route path="/admin" element={<Adminscreen />} exact/>
+        <Route path="/admin/*" element={<Adminscreen />} exact/>
         <Route path="/orders" element={<Orderscreen />} exact />
         <Route path="/login" element={<Login />} exact />
         <Route path="/register" element={<Register />} exact />
