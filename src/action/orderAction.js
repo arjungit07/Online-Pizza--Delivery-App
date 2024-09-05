@@ -62,7 +62,7 @@ export const deliverOrder = (orderid) => async (dispatch, getState) => {
     type: "GET_ALL_ORDER_REQUEST",
   });
   try {
-    await axios.post("/api/orders/deliverorder", { orderid });
+    await axios.post("https://pizza-shop-backend-1.onrender.com/api/orders/deliverorder", { orderid });
    swal("Success", "Order Delivered Successfully", "success");
     const orders = await axios.get("https://pizza-shop-backend-1.onrender.com/api/orders/alluserorder");
     dispatch({ type: "GET_ALL_ORDER_SUCCESS", payload: orders.data });
