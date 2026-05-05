@@ -45,7 +45,7 @@ export const logoutUser = () => (dispatch) => {
 export const getAllUsers = () => async (dispatch) => {
   dispatch({ type: "GET_USERS_REQUEST" });
   try {
-    const res = await axios.get("https://pizza-shop-backend-1.onrender.com/api/users/getallusers");
+    const res = await axios.get("https://pizza-shop-backend.onrender.com/api/users/getallusers");
     console.log(res);
     dispatch({ type: "GET_USERS_SUCCESS", payload: res.data });
   } catch (err) {
@@ -55,7 +55,7 @@ export const getAllUsers = () => async (dispatch) => {
 
 export const deleteUser = (userid) => async (dispatch) => {
   try {
-    await axios.post("https://pizza-shop-backend-1.onrender.com/api/users/deleteuser", { userid });
+    await axios.post("https://pizza-shop-backend.onrender.com/api/users/deleteuser", { userid });
     swal("User Deleted Succss!", "success");
     window.location.reload();
     // console.log(res);
