@@ -3,7 +3,8 @@ import swal from "sweetalert";
 export const registerUser = (user) => async (dispatch) => {
   dispatch({ type: "USER_REGISTER_REQUEST" });
   try {
-    const res = await axios.post("https://pizza-shop-backend-1.onrender.com/api/users/register", user);
+    const res = await axios.post("https://pizza-shop-backend.onrender.com/api/users/register", user);
+    https://pizza-shop-backend.onrender.com/
     console.log(res);
     dispatch({ type: "USER_REQUEST_SUCCESS" });
     swal("Success", "User Register Successfully", "success");
